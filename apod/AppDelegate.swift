@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // set the status bar icon
         if let statusButton = statusItem.button {
-            statusButton.image = NSImage(named: "#imageLiteral(resourceName: "SpaceIcon")")
+            statusButton.image = NSImage(named: "SpaceIcon")
         }
         
         // create a menu for the status item
@@ -26,6 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusMenu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         
         statusItem.menu = statusMenu
+        
+        // Hide the preferences window
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        let preferencesWindowController = storyboard.instantiateController(withIdentifier: "Preferences Window") as! NSWindowController
+        
+        preferencesWindowController.close()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
