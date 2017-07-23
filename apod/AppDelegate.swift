@@ -11,10 +11,21 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    // create a status item
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // set the status bar icon
+        if let statusButton = statusItem.button {
+            statusButton.image = NSImage(named: "#imageLiteral(resourceName: "SpaceIcon")")
+        }
+        
+        // create a menu for the status item
+        let statusMenu = NSMenu()
+        statusMenu.addItem(NSMenuItem.separator())
+        statusMenu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        
+        statusItem.menu = statusMenu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
