@@ -15,6 +15,9 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear() {
+    }
 
     override var representedObject: Any? {
         didSet {
@@ -22,6 +25,7 @@ class ViewController: NSViewController {
         }
     }
 
+    
 
 }
 
