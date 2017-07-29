@@ -50,7 +50,24 @@ class PhotoInfoViewController: NSViewController {
             }
         }
     }
+    
+    // Quit the app when the user asks
     @IBAction func quitButtonPushed(_ sender: NSButton) {
         NSApplication.shared().terminate(sender)
     }
+    
+    // Download the image to the user's Pictures folder
+    func downloadPhoto(with photoInfo: PhotoInfo) {
+        // where to save the image
+        let picturesDirectory = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask)[0]
+        let apodDirectory = picturesDirectory.appendingPathComponent("apod", isDirectory: true)
+        let imageUrl = apodDirectory.appendingPathComponent(photoInfo.url.lastPathComponent)
+        
+        let image = NSImage(contentsOf: photoInfo.url)
+        if let bits = image?.representations.first as? NSBitmapImageRep {
+            let data = bits.representation(using: .JPEG, properties: [:])
+            try? data?.write(to: imageUrl)
+        }
+    }
+    
 }

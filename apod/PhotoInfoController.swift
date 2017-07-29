@@ -6,19 +6,22 @@
 //  Copyright © 2017 Reginald Maltais. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class PhotoInfoController {
     
     // get the most recent photo information from NASA
     func fetchPhotoInfo(completion: @escaping (PhotoInfo?) -> Void) {
-        let baseURL = URL(string: "https://api.nasa.gov/planetary/apod")!
+        let defaults = UserDefaults.standard
+        let serviceURL = Bundle.main.object(forInfoDictionaryKey: "ServiceURL") as! String
+        
+        let baseURL = URL(string: serviceURL)
         let query: [String: String] = [
-            "api_key": "DEMO_KEY",
+            "api_key": defaults.value(forKey: "apikey") as! String,
             ]
         
-        let apodURL = baseURL.withQueries(query)!
-        let task = URLSession.shared.dataTask(with: apodURL) { (data, response, error) in
+        let apodURL = baseURL?.withQueries(query)!
+        let task = URLSession.shared.dataTask(with: (apodURL)!) { (data, response, error) in
             if let data = data,
                 let rawJSON = try?
                     JSONSerialization.jsonObject(with: data),
@@ -32,5 +35,16 @@ class PhotoInfoController {
             }
         }
         task.resume()
+    }
+    
+    func downloadPhoto(with photoInfo: PhotoInfo, to directory: URL) {
+        // where to save the image
+        let imageUrl = directory.appendingPathComponent(photoInfo.url.lastPathComponent)
+        
+        let image = NSImage(contentsOf: photoInfo.url)
+        if let bits = image?.representations.first as? NSBitmapImageRep {
+            let data = bits.representation(using: .JPEG, properties: [:])
+            try? data?.write(to: imageUrl)
+        }
     }
 }
