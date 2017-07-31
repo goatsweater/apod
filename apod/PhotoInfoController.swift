@@ -75,6 +75,8 @@ class PhotoInfoController {
                     // save the last download date to avoid duplicate downloads
                     let now = Date()
                     UserDefaults.standard.set(now, forKey: "lastdownload")
+                    
+                    removeLastDownload()
                     UserDefaults.standard.set(imageUrl, forKey: "lastImage")
                     
                     // update the desktop background
