@@ -12,8 +12,6 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var downloadPathTextField: NSTextField!
     @IBOutlet weak var historicalImagesTextField: NSTextField!
     @IBOutlet weak var apiKeyTextField: NSTextField!
-    
-    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +28,22 @@ class PreferencesViewController: NSViewController {
             if result == NSFileHandlingPanelOKButton {
                 if openPanel.urls.first != nil {
                     // set the user defaults to have this path
-                    self.defaults.set(openPanel.urls.first, forKey: "savepath")
+                    UserDefaults.standard.set(openPanel.urls.first, forKey: "savepath")
                     if openPanel.urls.first?.absoluteString != nil {
                         self.downloadPathTextField.stringValue = (openPanel.urls.first?.absoluteString)!
                     }
                 }
             } else if result == NSFileHandlingPanelCancelButton {
                 let picturesDirectory = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask)[0]
-                self.defaults.set(picturesDirectory, forKey: "savepath")
+                UserDefaults.standard.set(picturesDirectory, forKey: "savepath")
             }
         })
     }
     
     @IBAction func apiKeyTextField(_ sender: NSTextField) {
-        defaults.set(sender.stringValue, forKey: "apikey")
+        UserDefaults.standard.set(sender.stringValue, forKey: "apikey")
     }
     @IBAction func historicalImageTextField(_ sender: NSTextField) {
-        defaults.set(sender.stringValue, forKey: "keepImages")
+        UserDefaults.standard.set(sender.stringValue, forKey: "keepImages")
     }
 }

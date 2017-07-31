@@ -817,6 +817,9 @@
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <segue destination="Ndv-3x-YxU" kind="show" id="7OV-mF-0aR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <visibilityPriorities>

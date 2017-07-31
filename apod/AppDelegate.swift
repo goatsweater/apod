@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
+    var downloadTimer: Timer?
+    var lastDownload = Date()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // set the status bar icon
@@ -26,6 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // assign the popover
         popover.contentViewController = PhotoInfoViewController.loadFromNib()
         
+        // register defaults in UserDefaults
+        registerInitialDefaults()
+        
         // monitor for mouse clicks outside the popover to close it
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [unowned self] event in
             if self.popover.isShown {
@@ -33,15 +38,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        // create a menu for the status item
-        //createStatusMenu()
-        
-        // Hide the preferences window
-        //togglePreferencesWindow(nil)
+        // begin downloads photos
+        getDailyPhoto()
+        // and keep downloading every day
+        downloadTimer = startTimer()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        downloadTimer?.invalidate()
     }
     
     func showPopover(sender: Any?) {
@@ -64,35 +69,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func togglePreferencesWindow(_ sender: Any?) {
-        
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let preferencesWindowController = storyboard.instantiateController(withIdentifier: "PhotoInfo") as! NSWindowController
-        //let preferencesWindowController = storyboard.instantiateInitialController() as! NSWindowController
-        
-        if (preferencesWindowController.window?.isVisible)! {
-            preferencesWindowController.close()
-            NSApplication.shared().setActivationPolicy(.accessory)
-        } else {
-            NSApplication.shared().setActivationPolicy(.regular)
-            NSApp.activate(ignoringOtherApps: true)
-            preferencesWindowController.showWindow(sender)
-        }
-    }
-    
-    func createStatusMenu() {
-        
-        // create the menu for when the item is clicked
-        let statusMenu = NSMenu()
-        
-        statusMenu.addItem(withTitle: "Photo Info", action: #selector(togglePreferencesWindow(_:)), keyEquivalent: "i")
-        
-        statusMenu.addItem(NSMenuItem.separator())
-        
-        statusMenu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
-        
-        statusItem.menu = statusMenu
+    func registerInitialDefaults() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let initialValues: [String: Any] = [
+            "apikey": "DEMO_KEY",
+            "savepath": "",
+            "keepImages": 3,
+            "lastdownload": dateFormatter.date(from: "2017-01-01") ?? Date()
+        ]
+        UserDefaults.standard.register(defaults: initialValues)
     }
 
+    func startTimer() -> Timer {
+        let secondsPerDay = 86400
+        let timer = Timer.scheduledTimer(timeInterval: TimeInterval(secondsPerDay), target: self, selector: #selector(self.getDailyPhoto), userInfo: nil, repeats: true)
+        return timer
+    }
+    
+    @objc func getDailyPhoto() {
+        // get the latest photo information
+        let pic = PhotoInfoController()
+        pic.fetchPhotoInfo { (photoInfo) in
+            if let photoInfo = photoInfo {
+                DispatchQueue.main.async {
+                    pic.photoInfo = photoInfo
+                }
+                
+                // download the appropriate photo
+                let downloadDirectory = UserDefaults.standard.value(forKey: "savepath")
+                let path = URL(fileURLWithPath: downloadDirectory as! String)
+                
+                pic.downloadPhoto(to: path)
+            }
+        }
+    }
 }
 

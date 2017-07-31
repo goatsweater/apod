@@ -16,6 +16,7 @@
 		95441F391F28F7C8002AFA01 /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F381F28F7C8002AFA01 /* PhotoInfoViewController.swift */; };
 		95441F3B1F28F9BE002AFA01 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F3A1F28F9BE002AFA01 /* EventMonitor.swift */; };
 		95441F3D1F293E40002AFA01 /* PhotoInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F3C1F293E40002AFA01 /* PhotoInfoController.swift */; };
+		95A6063B1F2A9AE700EA646F /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6063A1F2A9AE700EA646F /* PreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		95441F381F28F7C8002AFA01 /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		95441F3A1F28F9BE002AFA01 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		95441F3C1F293E40002AFA01 /* PhotoInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfoController.swift; sourceTree = "<group>"; };
+		95A6063A1F2A9AE700EA646F /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				95441F2B1F25617E002AFA01 /* Main.storyboard */,
 				95441F381F28F7C8002AFA01 /* PhotoInfoViewController.swift */,
 				95441F3C1F293E40002AFA01 /* PhotoInfoController.swift */,
+				95A6063A1F2A9AE700EA646F /* PreferencesViewController.swift */,
 				95441F2E1F25617E002AFA01 /* Info.plist */,
 			);
 			path = apod;
@@ -150,6 +153,7 @@
 				95441F351F256D54002AFA01 /* PhotoInfo.swift in Sources */,
 				95441F391F28F7C8002AFA01 /* PhotoInfoViewController.swift in Sources */,
 				95441F371F256F46002AFA01 /* URL+Helpers.swift in Sources */,
+				95A6063B1F2A9AE700EA646F /* PreferencesViewController.swift in Sources */,
 				95441F3B1F28F9BE002AFA01 /* EventMonitor.swift in Sources */,
 				95441F3D1F293E40002AFA01 /* PhotoInfoController.swift in Sources */,
 				95441F281F25617E002AFA01 /* ViewController.swift in Sources */,
@@ -308,6 +312,7 @@
 				95441F331F25617E002AFA01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
