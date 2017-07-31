@@ -72,10 +72,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func registerInitialDefaults() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        let savePath = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask)[0]
         let initialValues: [String: Any] = [
             "apikey": "DEMO_KEY",
-            "savepath": "",
-            "keepImages": 3,
+            "savepath": savePath,
             "lastdownload": dateFormatter.date(from: "2017-01-01") ?? Date()
         ]
         UserDefaults.standard.register(defaults: initialValues)

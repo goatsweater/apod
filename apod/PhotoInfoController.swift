@@ -40,7 +40,7 @@ class PhotoInfoController {
             
             let baseURL = URL(string: serviceURL)
             let query: [String: String] = [
-                "api_key": UserDefaults.standard.value(forKey: "apikey") as! String,
+                "api_key": UserDefaults.standard.string(forKey: "apikey")!,
                 ]
             
             let apodURL = baseURL?.withQueries(query)!
@@ -75,6 +75,7 @@ class PhotoInfoController {
                     // save the last download date to avoid duplicate downloads
                     let now = Date()
                     UserDefaults.standard.set(now, forKey: "lastdownload")
+                    UserDefaults.standard.set(imageUrl, forKey: "lastImage")
                     
                     // update the desktop background
                     setBackgroundImage(to: imageUrl)
@@ -90,6 +91,13 @@ class PhotoInfoController {
         let workspace = NSWorkspace()
         if let screen = NSScreen.main() {
             try? workspace.setDesktopImageURL(imageUrl, for: screen, options: [:])
+        }
+    }
+    
+    // remove the previous downloaded file
+    func removeLastDownload() {
+        if let lastDownload = UserDefaults.standard.url(forKey: "lastImage") {
+            try? FileManager.default.removeItem(at: lastDownload)
         }
     }
 }

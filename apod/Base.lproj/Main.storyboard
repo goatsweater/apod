@@ -907,38 +907,8 @@
                                     <action selector="selectPathButtonPushed:" target="Ndv-3x-YxU" id="nUG-Ut-Uku"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqq-Wr-dCw">
-                                <rect key="frame" x="20" y="228" width="127" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Historical Images" id="fC1-t6-02g">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1C-Dh-eAB">
-                                <rect key="frame" x="153" y="226" width="72" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="3" drawsBackground="YES" id="H3n-e9-Gxl">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="historicalImageTextField:" target="Ndv-3x-YxU" id="QOR-3o-n61"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKr-eP-gGw">
-                                <rect key="frame" x="231" y="228" width="112" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0 to keep all" id="jcB-75-Y7v">
-                                    <font key="font" metaFont="toolTip"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-Oz-srQ">
-                                <rect key="frame" x="72" y="196" width="75" height="17"/>
+                                <rect key="frame" x="72" y="230" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="API Key" id="ZBy-rP-b8H">
                                     <font key="font" metaFont="system"/>
@@ -947,7 +917,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDj-GU-6hK">
-                                <rect key="frame" x="153" y="194" width="200" height="22"/>
+                                <rect key="frame" x="153" y="228" width="200" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="wdO-8h-35O">
                                     <font key="font" metaFont="system"/>
@@ -963,7 +933,6 @@
                     <connections>
                         <outlet property="apiKeyTextField" destination="iDj-GU-6hK" id="JG3-bb-RIv"/>
                         <outlet property="downloadPathTextField" destination="NZg-Yi-kyu" id="D6a-sO-O9t"/>
-                        <outlet property="historicalImagesTextField" destination="d1C-Dh-eAB" id="51K-mC-Uo7"/>
                     </connections>
                 </viewController>
                 <customObject id="Gzf-O3-Nt5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

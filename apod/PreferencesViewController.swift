@@ -10,7 +10,6 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var downloadPathTextField: NSTextField!
-    @IBOutlet weak var historicalImagesTextField: NSTextField!
     @IBOutlet weak var apiKeyTextField: NSTextField!
 
     override func viewDidLoad() {
@@ -42,8 +41,5 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func apiKeyTextField(_ sender: NSTextField) {
         UserDefaults.standard.set(sender.stringValue, forKey: "apikey")
-    }
-    @IBAction func historicalImageTextField(_ sender: NSTextField) {
-        UserDefaults.standard.set(sender.stringValue, forKey: "keepImages")
     }
 }
