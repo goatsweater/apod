@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		954104BA1F2EBE860095ED40 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 954104B91F2EBE860095ED40 /* README.md */; };
+		954104BA1F2EBE860095ED40 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 954104B91F2EBE860095ED40 /* README.md */; };
 		95441F261F25617E002AFA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F251F25617E002AFA01 /* AppDelegate.swift */; };
 		95441F281F25617E002AFA01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F271F25617E002AFA01 /* ViewController.swift */; };
 		95441F2A1F25617E002AFA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95441F291F25617E002AFA01 /* Assets.xcassets */; };
@@ -143,6 +143,7 @@
 			files = (
 				95441F2A1F25617E002AFA01 /* Assets.xcassets in Resources */,
 				95441F2D1F25617E002AFA01 /* Main.storyboard in Resources */,
+				954104BA1F2EBE860095ED40 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +160,6 @@
 				95A6063B1F2A9AE700EA646F /* PreferencesViewController.swift in Sources */,
 				95441F3B1F28F9BE002AFA01 /* EventMonitor.swift in Sources */,
 				95441F3D1F293E40002AFA01 /* PhotoInfoController.swift in Sources */,
-				954104BA1F2EBE860095ED40 /* README.md in Sources */,
 				95441F281F25617E002AFA01 /* ViewController.swift in Sources */,
 				95441F261F25617E002AFA01 /* AppDelegate.swift in Sources */,
 			);
@@ -222,7 +222,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -266,7 +266,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};

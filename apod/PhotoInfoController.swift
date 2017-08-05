@@ -11,25 +11,25 @@ import os.log
 
 class PhotoInfoController {
     var photoInfo: PhotoInfo?
-    let log = OSLog(subsystem: "com.goatsweater.apod", category: "Controller")
+    let log = OSLog(subsystem: "com.goatsweater.apod", category: "PhotoInfoController")
     
     // image data is good for one day
     var imageDataExpired: Bool {
         // no photo info yet
         guard let lastPhoto = photoInfo?.date else {
-            os_log("no photo info yet", log: log, type: .debug, "")
+            os_log("%@: no photo info yet", log: log, type: .debug, #function)
             return true
         }
         
         // unknown last download
         guard let lastDownload = UserDefaults.standard.value(forKey: "lastdownload") as? Date else {
-            os_log("unknown last download", log: log, type: .debug, "")
+            os_log("%@: unknown last download", log: log, type: .debug, #function)
             return true
         }
         
         // time interval is more than a day
         guard lastDownload.timeIntervalSince(lastPhoto) < TimeInterval(-86400.0) else {
-            os_log("time interval expired", log: log, type: .debug, "")
+            os_log("%@: time interval expired", log: log, type: .debug, #function)
             return true
         }
         
@@ -39,7 +39,7 @@ class PhotoInfoController {
     
     // get the most recent photo information from NASA
     func fetchPhotoInfo(completion: @escaping (PhotoInfo?) -> Void) {
-        os_log("fetchPhotoInfo", log: log, type: .debug, "")
+        os_log("%@", log: log, type: .debug, #function)
         // don't bother if the last fetch was today
         
         if imageDataExpired == true {
@@ -51,6 +51,7 @@ class PhotoInfoController {
                 ]
             
             let apodURL = baseURL?.withQueries(query)!
+            os_log("Fetching image from %@", log: log, type: .debug, (apodURL?.absoluteString)!)
             let task = URLSession.shared.dataTask(with: (apodURL)!) { (data, response, error) in
                 if let data = data,
                     let rawJSON = try?
@@ -59,7 +60,7 @@ class PhotoInfoController {
                     let photoInfo = PhotoInfo(json: json) {
                     completion(photoInfo)
                 } else {
-                    os_log("Error trying to serialize JSON response: %s", log: self.log, type: .error, error.debugDescription)
+                    os_log("Error trying to serialize JSON response: %@", log: self.log, type: .error, error.debugDescription)
                     
                     completion(nil)
                 }
@@ -69,28 +70,32 @@ class PhotoInfoController {
     }
     
     func downloadPhoto(to directory: URL) {
-        os_log("downloadPhoto at %s", log: log, type: .debug, directory.absoluteString)
+        os_log("%@ at %@", log: log, type: .debug, #function, directory.absoluteString)
+        
         // where to save the image
         if let photoInfo = self.photoInfo {
             let imageUrl = directory.appendingPathComponent(photoInfo.url.lastPathComponent)
             
+            os_log("Fetch image from %@", log: log, type: .debug, photoInfo.url.absoluteString)
+            os_log("Save image to %@", imageUrl.path)
             let image = NSImage(contentsOf: photoInfo.url)
             if let bits = image?.representations.first as? NSBitmapImageRep {
                 let data = bits.representation(using: .JPEG, properties: [:])
                 do {
                     try data?.write(to: imageUrl)
                     
+                    // remove the previously downloaded image
+                    removeLastDownload()
+                    
                     // save the last download date to avoid duplicate downloads
                     let now = Date()
                     UserDefaults.standard.set(now, forKey: "lastdownload")
-                    
-                    removeLastDownload()
                     UserDefaults.standard.set(imageUrl, forKey: "lastImage")
                     
                     // update the desktop background
                     setBackgroundImage(to: imageUrl)
                 } catch {
-                    os_log("Error saving downloaded image: %s", log: log, type: .error, imageUrl.absoluteString)
+                    os_log("Error saving downloaded image: %@", log: log, type: .error, error.localizedDescription)
                 }
             }
         }
@@ -98,7 +103,7 @@ class PhotoInfoController {
     
     // set the desktop background to the corresponding image
     func setBackgroundImage(to imageUrl: URL) {
-        os_log("setBackgroundImage to %s", log: log, type: .debug, imageUrl.absoluteString)
+        os_log("%@ to %@", log: log, type: .debug, #function, imageUrl.absoluteString)
         let workspace = NSWorkspace()
         if let screen = NSScreen.main() {
             try? workspace.setDesktopImageURL(imageUrl, for: screen, options: [:])
@@ -107,12 +112,12 @@ class PhotoInfoController {
     
     // remove the previous downloaded file
     func removeLastDownload() {
-        os_log("removeLastDownload", log: log, type: .debug, "")
+        os_log("%@", log: log, type: .debug, #function)
         if let lastDownload = UserDefaults.standard.url(forKey: "lastImage") {
             do {
             try FileManager.default.removeItem(at: lastDownload)
             } catch {
-                os_log("Error removing file at %s", log: log, type: .error, lastDownload.absoluteString)
+                os_log("Error removing file at %@: %@", log: log, type: .error, lastDownload.absoluteString, error.localizedDescription)
             }
         }
     }

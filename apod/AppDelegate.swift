@@ -72,10 +72,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func registerInitialDefaults() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let savePath = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask)[0]
+        let savePath = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let initialValues: [String: Any] = [
             "apikey": "DEMO_KEY",
-            "savepath": savePath,
+            "savepath": savePath?.path ?? "",
             "lastdownload": dateFormatter.date(from: "2017-01-01") ?? Date()
         ]
         UserDefaults.standard.register(defaults: initialValues)
@@ -89,18 +89,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func getDailyPhoto() {
         // get the latest photo information
-        let pic = PhotoInfoController()
-        pic.fetchPhotoInfo { (photoInfo) in
+        let photoInfoController = PhotoInfoController()
+        photoInfoController.fetchPhotoInfo { (photoInfo) in
             if let photoInfo = photoInfo {
                 DispatchQueue.main.async {
-                    pic.photoInfo = photoInfo
+                    photoInfoController.photoInfo = photoInfo
                 }
                 
                 // download the appropriate photo
                 let downloadDirectory = UserDefaults.standard.value(forKey: "savepath")
                 let path = URL(fileURLWithPath: downloadDirectory as! String)
                 
-                pic.downloadPhoto(to: path)
+                photoInfoController.downloadPhoto(to: path)
             }
         }
     }
