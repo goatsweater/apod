@@ -74,15 +74,17 @@ class PhotoInfoController {
         
         // where to save the image
         if let photoInfo = self.photoInfo {
-            let imageUrl = directory.appendingPathComponent(photoInfo.url.lastPathComponent)
+            let useHDImage = UserDefaults.standard.bool(forKey: "downloadHDImage") 
+            let imageUrl = useHDImage == true ? photoInfo.hdurl : photoInfo.url
             
-            os_log("Fetch image from %@", log: log, type: .debug, photoInfo.url.absoluteString)
-            os_log("Save image to %@", imageUrl.path)
-            let image = NSImage(contentsOf: photoInfo.url)
+            os_log("Fetch image from %@", log: log, type: .debug, imageUrl.absoluteString)
+            let image = NSImage(contentsOf: imageUrl)
+            let saveUrl = directory.appendingPathComponent(imageUrl.lastPathComponent)
             if let bits = image?.representations.first as? NSBitmapImageRep {
                 let data = bits.representation(using: .JPEG, properties: [:])
                 do {
-                    try data?.write(to: imageUrl)
+                    os_log("Save image to %@", saveUrl.path)
+                    try data?.write(to: saveUrl)
                     
                     // remove the previously downloaded image
                     removeLastDownload()
@@ -90,10 +92,10 @@ class PhotoInfoController {
                     // save the last download date to avoid duplicate downloads
                     let now = Date()
                     UserDefaults.standard.set(now, forKey: "lastdownload")
-                    UserDefaults.standard.set(imageUrl, forKey: "lastImage")
+                    UserDefaults.standard.set(saveUrl, forKey: "lastImage")
                     
                     // update the desktop background
-                    setBackgroundImage(to: imageUrl)
+                    setBackgroundImage(to: saveUrl)
                 } catch {
                     os_log("Error saving downloaded image: %@", log: log, type: .error, error.localizedDescription)
                 }

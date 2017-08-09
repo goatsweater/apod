@@ -11,10 +11,15 @@ import Cocoa
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var downloadPathTextField: NSTextField!
     @IBOutlet weak var apiKeyTextField: NSTextField!
+    @IBOutlet weak var downloadHDCheckbox: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        // is the HD image option selected?
+        if UserDefaults.standard.bool(forKey: "downloadHDImage") == true {
+            downloadHDCheckbox.setNextState()
+        }
     }
     
     @IBAction func selectPathButtonPushed(_ sender: NSButton) {
@@ -41,5 +46,14 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func apiKeyTextField(_ sender: NSTextField) {
         UserDefaults.standard.set(sender.stringValue, forKey: "apikey")
+    }
+    
+    @IBAction func downloadHDImageCheckboxPressed(_ sender: NSButton) {
+        switch sender.state {
+        case NSOnState:
+            UserDefaults.standard.set(true, forKey: "downloadHDImage")
+        default:
+            UserDefaults.standard.set(false, forKey: "downloadHDImage")
+        }
     }
 }
