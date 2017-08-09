@@ -865,10 +865,22 @@
                                     <action selector="apiKeyTextField:" target="Ndv-3x-YxU" id="ZaP-79-kjI"/>
                                 </connections>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AqU-rl-2ne">
+                                <rect key="frame" x="151" y="203" width="204" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Download HD Image" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="yqh-FN-7S3">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="downloadHDImageCheckboxPressed:" target="Ndv-3x-YxU" id="6o3-cY-d8z"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="apiKeyTextField" destination="iDj-GU-6hK" id="JG3-bb-RIv"/>
+                        <outlet property="downloadHDImageCheckbox" destination="AqU-rl-2ne" id="upL-7R-qzm"/>
                         <outlet property="downloadPathTextField" destination="NZg-Yi-kyu" id="D6a-sO-O9t"/>
                     </connections>
                 </viewController>

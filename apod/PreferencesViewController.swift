@@ -14,7 +14,6 @@ class PreferencesViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     @IBAction func selectPathButtonPushed(_ sender: NSButton) {
@@ -41,5 +40,14 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func apiKeyTextField(_ sender: NSTextField) {
         UserDefaults.standard.set(sender.stringValue, forKey: "apikey")
+    }
+    
+    @IBAction func downloadHDImageCheckboxPressed(_ sender: NSButton) {
+        switch sender.state {
+        case NSOnState:
+            UserDefaults.standard.set(true, forKey: "downloadHDImage")
+        default:
+            UserDefaults.standard.set(false, forKey: "downloadHDImage")
+        }
     }
 }
