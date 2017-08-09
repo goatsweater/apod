@@ -690,7 +690,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="739"/>
+            <point key="canvasLocation" x="643" y="235"/>
         </scene>
         <!--PhotoInfo-->
         <scene sceneID="X4F-gr-AlI">
@@ -805,12 +805,12 @@
                 </viewController>
                 <customObject id="FMU-GN-b7v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1019"/>
+            <point key="canvasLocation" x="60" y="600"/>
         </scene>
-        <!--Preferences View Controller-->
+        <!--Astronomy Picture of the Day-->
         <scene sceneID="8YL-EU-kfk">
             <objects>
-                <viewController storyboardIdentifier="Preferences" id="Ndv-3x-YxU" customClass="PreferencesViewController" customModule="apod" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Astronomy Picture of the Day" storyboardIdentifier="Preferences" id="Ndv-3x-YxU" customClass="PreferencesViewController" customModule="apod" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qCt-fP-jaj">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="115"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -887,7 +887,7 @@
                 </viewController>
                 <customObject id="Gzf-O3-Nt5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1250.5"/>
+            <point key="canvasLocation" x="60" y="873"/>
         </scene>
     </scenes>
 </document>
