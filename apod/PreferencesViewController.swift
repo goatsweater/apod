@@ -11,9 +11,15 @@ import Cocoa
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var downloadPathTextField: NSTextField!
     @IBOutlet weak var apiKeyTextField: NSTextField!
+    @IBOutlet weak var downloadHDCheckbox: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // is the HD image option selected?
+        if UserDefaults.standard.bool(forKey: "downloadHDImage") == true {
+            downloadHDCheckbox.setNextState()
+        }
     }
     
     @IBAction func selectPathButtonPushed(_ sender: NSButton) {
