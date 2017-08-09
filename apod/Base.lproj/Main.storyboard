@@ -748,6 +748,16 @@
                                                     <action selector="quitButtonPushed:" target="8qf-k4-hoK" id="NQf-UI-yDX"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BMh-8R-VLN">
+                                                <rect key="frame" x="124" y="-7" width="139" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Show Image File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yeq-ag-J1V">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="showFileButtonPushed:" target="8qf-k4-hoK" id="Ycy-dU-geE"/>
+                                                </connections>
+                                            </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LYj-Li-igz">
                                                 <rect key="frame" x="303" y="-7" width="113" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gUN-0m-DDl">
@@ -762,8 +772,10 @@
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>

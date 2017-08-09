@@ -41,6 +41,15 @@ class PhotoInfoViewController: NSViewController {
         NSApplication.shared().terminate(sender)
     }
     
+    // Display the current file in the Finder
+    @IBAction func showFileButtonPushed(_ sender: NSButton) {
+        let filePath = UserDefaults.standard.string(forKey: "lastImage")
+        if filePath != nil {
+            let fileUrl = URL(fileURLWithPath: filePath!)
+            NSWorkspace.shared().activateFileViewerSelecting([fileUrl])
+        }
+    }
+    
     // load the latest photo information retrieved
     func updateUI() {
         if photoInfoController.photoInfo != nil {
