@@ -824,11 +824,11 @@
             <objects>
                 <viewController title="Astronomy Picture of the Day" storyboardIdentifier="Preferences" id="Ndv-3x-YxU" customClass="PreferencesViewController" customModule="apod" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qCt-fP-jaj">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="85"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPt-m4-CwI">
-                                <rect key="frame" x="18" y="75" width="129" height="17"/>
+                                <rect key="frame" x="18" y="45" width="129" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Download Location" id="vBp-zB-QM7">
                                     <font key="font" metaFont="system"/>
@@ -837,7 +837,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-Yi-kyu">
-                                <rect key="frame" x="153" y="73" width="200" height="22"/>
+                                <rect key="frame" x="153" y="43" width="200" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="sws-Ty-vkS">
                                     <font key="font" metaFont="system"/>
@@ -846,7 +846,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6g-Um-WTh">
-                                <rect key="frame" x="355" y="67" width="81" height="32"/>
+                                <rect key="frame" x="355" y="37" width="81" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Select" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dnJ-4R-kyQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -856,27 +856,6 @@
                                     <action selector="selectPathButtonPushed:" target="Ndv-3x-YxU" id="nUG-Ut-Uku"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-Oz-srQ">
-                                <rect key="frame" x="72" y="45" width="75" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="API Key" id="ZBy-rP-b8H">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDj-GU-6hK">
-                                <rect key="frame" x="153" y="43" width="200" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="wdO-8h-35O">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="apiKeyTextField:" target="Ndv-3x-YxU" id="ZaP-79-kjI"/>
-                                </connections>
-                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AqU-rl-2ne">
                                 <rect key="frame" x="151" y="18" width="204" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -891,7 +870,6 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="apiKeyTextField" destination="iDj-GU-6hK" id="JG3-bb-RIv"/>
                         <outlet property="downloadHDCheckbox" destination="AqU-rl-2ne" id="XBP-g5-Z2o"/>
                         <outlet property="downloadHDImageCheckbox" destination="AqU-rl-2ne" id="upL-7R-qzm"/>
                         <outlet property="downloadPathTextField" destination="NZg-Yi-kyu" id="D6a-sO-O9t"/>
@@ -899,7 +877,7 @@
                 </viewController>
                 <customObject id="Gzf-O3-Nt5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60" y="873"/>
+            <point key="canvasLocation" x="60" y="857.5"/>
         </scene>
     </scenes>
 </document>

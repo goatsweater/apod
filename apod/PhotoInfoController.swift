@@ -37,6 +37,14 @@ class PhotoInfoController {
         return false
     }
     
+    // get the api key
+    var apiKey: String {
+        guard let fileUrl = Bundle.main.url(forResource: "keys", withExtension: "plist") else { return "" }
+        
+        let dict = NSDictionary(contentsOfFile: fileUrl.path)
+        return dict?.object(forKey: "API_KEY") as! String
+    }
+    
     // get the most recent photo information from NASA
     func fetchPhotoInfo(completion: @escaping (PhotoInfo?) -> Void) {
         os_log("%@", log: log, type: .debug, #function)
@@ -47,7 +55,7 @@ class PhotoInfoController {
             
             let baseURL = URL(string: serviceURL)
             let query: [String: String] = [
-                "api_key": UserDefaults.standard.string(forKey: "apikey")!,
+                "api_key": apiKey,
                 ]
             
             let apodURL = baseURL?.withQueries(query)!
