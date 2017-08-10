@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		953B821C1F3BD5570068EAF8 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953B821B1F3BD5570068EAF8 /* keys.plist */; };
 		953B821E1F3BD56D0068EAF8 /* keys.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953B821D1F3BD56D0068EAF8 /* keys.default.plist */; };
+		953B82221F3BDD300068EAF8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 953B82211F3BDD300068EAF8 /* .gitignore */; };
 		954104BA1F2EBE860095ED40 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 954104B91F2EBE860095ED40 /* README.md */; };
 		95441F261F25617E002AFA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F251F25617E002AFA01 /* AppDelegate.swift */; };
 		95441F281F25617E002AFA01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95441F271F25617E002AFA01 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		953B821B1F3BD5570068EAF8 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		953B821D1F3BD56D0068EAF8 /* keys.default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.default.plist; sourceTree = "<group>"; };
+		953B82211F3BDD300068EAF8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		954104B91F2EBE860095ED40 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95441F221F25617E002AFA01 /* apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95441F251F25617E002AFA01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		95441F191F25617E002AFA01 = {
 			isa = PBXGroup;
 			children = (
+				953B82211F3BDD300068EAF8 /* .gitignore */,
 				954104B91F2EBE860095ED40 /* README.md */,
 				95441F241F25617E002AFA01 /* apod */,
 				95441F231F25617E002AFA01 /* Products */,
@@ -151,6 +154,7 @@
 				95441F2A1F25617E002AFA01 /* Assets.xcassets in Resources */,
 				953B821E1F3BD56D0068EAF8 /* keys.default.plist in Resources */,
 				95441F2D1F25617E002AFA01 /* Main.storyboard in Resources */,
+				953B82221F3BDD300068EAF8 /* .gitignore in Resources */,
 				954104BA1F2EBE860095ED40 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
