@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class PhotoInfoViewController: NSViewController {
     @IBOutlet weak var descriptionTextField: NSTextField!
@@ -46,6 +47,7 @@ class PhotoInfoViewController: NSViewController {
         let filePath = UserDefaults.standard.string(forKey: "lastImage")
         if filePath != nil {
             let fileUrl = URL(fileURLWithPath: filePath!)
+            os_log("Select %@ in Finder", fileUrl.path)
             NSWorkspace.shared().activateFileViewerSelecting([fileUrl])
         }
     }
