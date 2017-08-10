@@ -56,8 +56,8 @@
 		95441F191F25617E002AFA01 = {
 			isa = PBXGroup;
 			children = (
-				953B82211F3BDD300068EAF8 /* .gitignore */,
 				954104B91F2EBE860095ED40 /* README.md */,
+				953B82211F3BDD300068EAF8 /* .gitignore */,
 				95441F241F25617E002AFA01 /* apod */,
 				95441F231F25617E002AFA01 /* Products */,
 			);

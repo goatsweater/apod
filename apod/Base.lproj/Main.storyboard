@@ -870,8 +870,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="downloadHDCheckbox" destination="AqU-rl-2ne" id="XBP-g5-Z2o"/>
-                        <outlet property="downloadHDImageCheckbox" destination="AqU-rl-2ne" id="upL-7R-qzm"/>
+                        <outlet property="downloadHDCheckbox" destination="AqU-rl-2ne" id="AZP-n5-epB"/>
                         <outlet property="downloadPathTextField" destination="NZg-Yi-kyu" id="D6a-sO-O9t"/>
                     </connections>
                 </viewController>

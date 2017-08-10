@@ -10,7 +10,6 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var downloadPathTextField: NSTextField!
-    @IBOutlet weak var apiKeyTextField: NSTextField!
     @IBOutlet weak var downloadHDCheckbox: NSButton!
 
     override func viewDidLoad() {
@@ -42,10 +41,6 @@ class PreferencesViewController: NSViewController {
                 UserDefaults.standard.set(picturesDirectory, forKey: "savepath")
             }
         })
-    }
-    
-    @IBAction func apiKeyTextField(_ sender: NSTextField) {
-        UserDefaults.standard.set(sender.stringValue, forKey: "apikey")
     }
     
     @IBAction func downloadHDImageCheckboxPressed(_ sender: NSButton) {
